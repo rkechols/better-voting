@@ -56,10 +56,20 @@ def make_markov_model(preference_orders: List[List[str]]) -> Tuple[List[str], np
 	return legend, markov_model
 
 
+def get_stable_state(markov_model: np.ndarray) -> np.ndarray:
+	eigen_values, eigen_vectors = np.linalg.eig(markov_model)
+	for i in range(eigen_values.shape[0]):
+		if abs(eigen_values[i] - 1) < 1e-6:
+			return eigen_vectors[:, i]
+	raise ValueError("could not find stable state")
+
+
 def markovian_voting(preference_orders: List[List[str]]) -> List[Tuple[str, float]]:
 	verify_data(preference_orders)
 	legend, markov_model = make_markov_model(preference_orders)
-	print("hi")
+	stable_state = get_stable_state(markov_model)
+	scores = list(zip(legend, list(stable_state)))
+	return scores
 
 
 if __name__ == "__main__":
