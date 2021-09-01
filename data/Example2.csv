@@ -1,0 +1,5 @@
+Timestamp,Please Rank the following by preference [First choice (#1)],Please Rank the following by preference [Second choice (#2)],Please Rank the following by preference [Third choice (#3)],Please Rank the following by preference [Fourth choice (#4)]
+9/1/2021 2:07:07,sushi,chicken,pizza,Indian
+9/1/2021 2:07:22,sushi,chicken,pizza,Indian
+9/1/2021 2:07:33,chicken,sushi,pizza,Indian
+9/1/2021 2:07:44,pizza,chicken,Indian,sushi

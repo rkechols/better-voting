@@ -68,6 +68,7 @@ def markovian_voting(preference_orders: List[List[str]]) -> List[Tuple[str, floa
 	verify_data(preference_orders)
 	legend, markov_model = make_markov_model(preference_orders)
 	stable_state = get_stable_state(markov_model)
+	stable_state = stable_state / stable_state.sum()
 	scores = list(zip(legend, list(stable_state)))
 	return scores
 
@@ -81,4 +82,4 @@ if __name__ == "__main__":
 	results = markovian_voting(csv_data)
 	for choice_name, score in sorted(results, key=lambda x: x[1], reverse=True):
 		score_scaled = 100 * score
-		print(f"{score_scaled:.2f}\t: {choice_name}")
+		print(f"{score_scaled:.2f} : {choice_name}")
